@@ -1,11 +1,13 @@
-package com.example.androidhomework;
+package com.example.androidhomework.sup;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class sup_question extends AppCompatActivity implements View.OnClickListener {
+import com.example.androidhomework.R;
+
+public class SupQuestion extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

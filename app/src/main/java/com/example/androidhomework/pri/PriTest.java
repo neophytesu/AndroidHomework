@@ -1,17 +1,19 @@
-package com.example.androidhomework;
+package com.example.androidhomework.pri;
 
 import android.os.Bundle;
 import android.view.View;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class pri_study extends AppCompatActivity implements View.OnClickListener {
+import com.example.androidhomework.R;
+
+public class PriTest extends AppCompatActivity implements View.OnClickListener{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.pri_study);
+        setContentView(R.layout.pri_test);
         init();
 
     }

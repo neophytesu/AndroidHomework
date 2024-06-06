@@ -9,20 +9,20 @@
     android:background="@drawable/background">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mainPri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E3E3E3"
         android:text="我是普通用户"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/mainSup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.851" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/mainSup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="136dp"
@@ -41,7 +41,7 @@
         android:text="红色主题教育学习"
 
         android:textSize="150px"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/mainPri"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"

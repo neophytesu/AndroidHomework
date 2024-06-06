@@ -13,28 +13,28 @@
         android:theme="@style/Theme.AndroidHomework"
         tools:targetApi="31">
         <activity
-            android:name=".supuser"
-            android:exported="false"
+            android:name=".sup.SupUser"
+            android:exported="true"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".priuser"
-            android:exported="false"
+            android:name=".pri.PriUser"
+            android:exported="true"
             android:launchMode="singleTask" />
         <activity
-            android:name=".pri_study"
-            android:exported="false"
+            android:name=".pri.PriStudy"
+            android:exported="true"
             android:launchMode="singleTask" />
         <activity
-            android:name=".pri_test"
-            android:exported="false"
+            android:name=".pri.PriTest"
+            android:exported="true"
             android:launchMode="singleTask" />
         <activity
-            android:name=".sup_knowledge"
-            android:exported="false"
+            android:name=".sup.SupKnowledge"
+            android:exported="true"
             android:launchMode="singleTask" />
         <activity
-            android:name=".sup_question"
-            android:exported="false"
+            android:name=".sup.SupQuestion"
+            android:exported="true"
             android:launchMode="singleTask" />
         <activity
             android:name=".MainActivity"

@@ -1,18 +1,19 @@
-package com.example.androidhomework;
+package com.example.androidhomework.sup;
 
 import android.os.Bundle;
 import android.view.View;
-import android.os.Bundle;
-import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class pri_test extends AppCompatActivity implements View.OnClickListener{
+import com.example.androidhomework.R;
+
+public class SupKnowledge extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.pri_test);
+        setContentView(R.layout.sup_knowledge);
         init();
 
     }

@@ -5,22 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bk">
-
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/priStudy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E3E3E3"
         android:text="去学习"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/priTest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.907" />
-
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/priTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
@@ -30,9 +28,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/priQuit"
         android:layout_width="115dp"
         android:layout_height="58dp"
         android:backgroundTint="#00AA4C4C"

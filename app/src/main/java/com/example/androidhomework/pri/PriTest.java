@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidhomework.Mysql;
@@ -25,6 +28,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PriTest extends AppCompatActivity implements View.OnClickListener {
     private Mysql mysql;
@@ -47,6 +52,19 @@ public class PriTest extends AppCompatActivity implements View.OnClickListener {
     private int index = 1;
     //从1开始
     private Map<Integer, String> selected = new HashMap<>();
+    //计时器
+    Timer timer;
+    private final Handler timeoutHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if (msg.what > 0) {
+                testSurplus.setText(String.valueOf("倒计时:" + msg.what));
+            } else {
+                submit();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +97,8 @@ public class PriTest extends AppCompatActivity implements View.OnClickListener {
             testEmpty = findViewById(R.id.testEmpty);
             testEmpty.setVisibility(VISIBLE);
         } else {
-            testSurplus=findViewById(R.id.testSurplus);
-            testEmpty=findViewById(R.id.testEmpty);
+            testSurplus = findViewById(R.id.testSurplus);
+            testEmpty = findViewById(R.id.testEmpty);
             testStart = findViewById(R.id.testStart);
             testStart.setVisibility(VISIBLE);
             testQues = findViewById(R.id.testQues);
@@ -113,6 +131,18 @@ public class PriTest extends AppCompatActivity implements View.OnClickListener {
             testAnsGroup.setVisibility(VISIBLE);
             testQues.setVisibility(VISIBLE);
             testNext.setVisibility(VISIBLE);
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                int i = 5;
+
+                @Override
+                public void run() {
+                    Message msg = new Message();
+                    msg.what = i--;
+                    timeoutHandler.sendMessage(msg);
+                }
+            },0,1000);
+            testSurplus.setVisibility(VISIBLE);
         } else if (id == R.id.testPre) {
             record();
             if (index == 2) {
@@ -144,30 +174,31 @@ public class PriTest extends AppCompatActivity implements View.OnClickListener {
         int id = testAnsGroup.getCheckedRadioButtonId();
         if (id == R.id.testAnsA) {
             selected.put(index, "A");
-        }else if (id == R.id.testAnsB) {
+        } else if (id == R.id.testAnsB) {
             selected.put(index, "B");
-        }else if (id == R.id.testAnsC) {
+        } else if (id == R.id.testAnsC) {
             selected.put(index, "C");
-        }else if (id == R.id.testAnsD) {
+        } else if (id == R.id.testAnsD) {
             selected.put(index, "D");
         }
     }
 
     //提交题目
     private void submit() {
-        int finalscore=0;
+        int finalscore = 0;
         testAnsGroup.setVisibility(INVISIBLE);
         testNext.setVisibility(INVISIBLE);
         testPre.setVisibility(INVISIBLE);
         testQues.setVisibility(INVISIBLE);
+        testSurplus.setVisibility(INVISIBLE);
         for (int i = 0; i < 3; i++) {
-            if (selected.containsKey(i+1)){
-                Question question=questions.get(i);
-                finalscore+= Objects.equals(selected.get(i + 1), question.getAnswer()) ?question.getScore():0;
+            if (selected.containsKey(i + 1)) {
+                Question question = questions.get(i);
+                finalscore += Objects.equals(selected.get(i + 1), question.getAnswer()) ? question.getScore() : 0;
             }
         }
-        String s="本次测验成绩:"+ finalscore+"分";
-        Log.i("hhh",s);
+        String s = "本次测验成绩:" + finalscore + "分";
+        Log.i("hhh", s);
         testEmpty.setText(s);
         testEmpty.setVisibility(VISIBLE);
     }
@@ -181,17 +212,18 @@ public class PriTest extends AppCompatActivity implements View.OnClickListener {
         testAnsC.setText(question.getQuestionC());
         testAnsD.setText(question.getQuestionD());
         testAnsGroup.clearCheck();
-        if (selected.containsKey(index)){
-            String s=selected.get(index);
-            if ("A".equals(s)){
+        if (selected.containsKey(index)) {
+            String s = selected.get(index);
+            if ("A".equals(s)) {
                 testAnsGroup.check(R.id.testAnsA);
-            }else if("B".equals(s)){
+            } else if ("B".equals(s)) {
                 testAnsGroup.check(R.id.testAnsB);
-            }else if("C".equals(s)){
+            } else if ("C".equals(s)) {
                 testAnsGroup.check(R.id.testAnsC);
-            }else if("D".equals(s)){
+            } else if ("D".equals(s)) {
                 testAnsGroup.check(R.id.testAnsD);
             }
         }
     }
+
 }

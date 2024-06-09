@@ -127,6 +127,7 @@
         android:layout_width="116dp"
         android:layout_height="46dp"
         android:text="剩余时间"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.11"
